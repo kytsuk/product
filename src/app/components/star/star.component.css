@@ -1,0 +1,13 @@
+.crop{
+
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
+    color: goldenrod;
+
+
+}
+.crop2{
+
+    display: inline-block;
+}

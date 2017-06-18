@@ -20,7 +20,7 @@ this.product = this.productservise.getProduct(this.id);
 
   }
   goBack(){
-    this.routes.navigate(['product']);
+    this.routes.navigate(['products']);
   }
   edit(){
     this.routes.navigate(['product', this.id, 'edit']);

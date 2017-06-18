@@ -30,7 +30,8 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
         {path: 'products' , component: ProductListComponent},
         { path: 'product/:id' , component: ProductItemComponent},
         { path: 'add' , component: AddProductComponent},
-        {path: 'product/:id/edit' , component: EditProductComponent}
+        {path: 'product/:id/edit' , component: EditProductComponent},
+        {path: 'star' , component: StarComponent}
 
       ]),
       ReactiveFormsModule
