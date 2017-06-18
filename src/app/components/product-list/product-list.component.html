@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class=" list-product">
+      <button class="btn btn-success" (click)="showImage()" >{{btnText}} image</button>
+    </div>
+
+    <table class="table">
+      <caption></caption>
+      <thead>
+      <tr>
+        <th>image</th>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Price</th>
+        <th>Rating</th>
+      </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let item of productes; let p = index">
+
+        <td><img *ngIf="showimg"
+                 [ngStyle]="{'max-width' : '50px'} "
+                 src="{{item.img_url}}"></td>
+            <td> <a [routerLink]="['/product', p]">{{item.name}}</a></td>
+        <td>{{item.code}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.rating}}</td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

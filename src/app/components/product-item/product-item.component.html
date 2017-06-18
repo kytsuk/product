@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class=" list-product">
+      <button class="btn btn-success" (click)="goBack()">GoBack</button>
+    </div>
+
+    <table class="table">
+      <caption></caption>
+      <thead>
+      <tr>
+        <th>image</th>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Price</th>
+        <th>Rating</th>
+      </tr>
+      </thead>
+
+      <tbody>
+
+         <tr >
+          <td><img
+                   [ngStyle]="{'max-width' : '50px'} "
+                   src="{{product.img_url}}"></td>
+          <td>{{product.name}}</td>
+          <td>{{product.code}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.rating}}</td>
+          <td class="icon center-block">
+            <button class="btn btn-warning btn-xs" (click)="deleteProduct()"><span class="glyphicon glyphicon-trash"></span></button>
+            <button class="btn btn-info btn-xs" (click)="edit()" [id]="id"><span class="glyphicon glyphicon-pencil"></span></button>
+          </td>
+        </tr>
+
+
+      </tbody>
+
+    </table>
+  </div>
+    <router-outlet></router-outlet>
+</div>
