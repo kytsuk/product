@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Product} from "../Product.model";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ProductService} from "../product.service";
@@ -17,6 +17,7 @@ export class AddProductComponent implements OnInit {
   myForm : FormGroup;
   pricenumber: boolean = false;
   url: string = '../../../assets/image/';
+    @ViewChild('img_url') el:ElementRef;
   constructor (private productservice: ProductService, private routes: Router) {
   }
   ngOnInit(){
@@ -31,11 +32,12 @@ export class AddProductComponent implements OnInit {
   }
 
   public  onSubmit(myForm: FormGroup){
-
+  let img_url = this.el.nativeElement.files[0].name;
+  console.log(img_url);
   if (isNumeric(myForm.value.price) && isNumeric(myForm.value.rating) ) {
   let product: Product = new Product(this.id, myForm.value.name,
       myForm.value.code, myForm.value.price,
-      myForm.value.rating, this.url+this.nameImgUrl());
+      myForm.value.rating, this.url+img_url);
 
   this.productservice.addProduct(product);
   this.pricenumber = false;
@@ -47,7 +49,5 @@ export class AddProductComponent implements OnInit {
   goBack(){
     this.routes.navigate(['/products']);
   }
-    nameImgUrl():any {
-        return (<HTMLInputElement>document.getElementById('img_url')).value.match(/[^\/\\]+$/)[0];
-    };
+
 }

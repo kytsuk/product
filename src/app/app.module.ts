@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {ElementRef, NgModule} from '@angular/core';
+import { NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -8,10 +8,13 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import {ProductService} from "./components/product.service";
 import { StarComponent } from './components/star/star.component';
-import {RouterModule} from "@angular/router";
+
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { SearchPipe } from './search.pipe';
+import {AppRoutingModule} from "./app-routing.module";
+import { LoadComponent } from './components/load/load.component';
+import {UploadService} from "./upload.service";
 
 
 @NgModule({
@@ -22,24 +25,17 @@ import { SearchPipe } from './search.pipe';
     StarComponent,
     AddProductComponent,
     EditProductComponent,
-    SearchPipe
+    SearchPipe,
+    LoadComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-      RouterModule.forRoot([
-        {path: '', redirectTo: 'products', pathMatch: 'full'},
-        {path: 'products' , component: ProductListComponent},
-        { path: 'product/:id' , component: ProductItemComponent},
-        { path: 'add' , component: AddProductComponent},
-        {path: 'product/:id/edit' , component: EditProductComponent},
-        {path: 'star' , component: StarComponent}
-
-      ]),
-      ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, UploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
