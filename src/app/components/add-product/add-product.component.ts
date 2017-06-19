@@ -16,11 +16,12 @@ export class AddProductComponent implements OnInit {
   id: number = Math.floor(Math.random() * (1000 - 1)) + 1;
   myForm : FormGroup;
   pricenumber: boolean = false;
+  url: string = '../../../assets/image/';
   constructor (private productservice: ProductService, private routes: Router) {
   }
   ngOnInit(){
         this.myForm = new FormGroup({
-      img_url: new FormControl('', Validators.required),
+      img_url: new FormControl(''),
       name: new FormControl('', [Validators.required]),
       code: new FormControl('', [Validators.required]),
       price: new FormControl('', Validators.required),
@@ -28,20 +29,25 @@ export class AddProductComponent implements OnInit {
     });
 
   }
-  public  onSubmit(myForm: FormGroup){
 
+  public  onSubmit(myForm: FormGroup){
 
   if (isNumeric(myForm.value.price) && isNumeric(myForm.value.rating) ) {
   let product: Product = new Product(this.id, myForm.value.name,
       myForm.value.code, myForm.value.price,
-      myForm.value.rating, myForm.value.img_url);
+      myForm.value.rating, this.url+this.nameImgUrl());
 
   this.productservice.addProduct(product);
   this.pricenumber = false;
   this.goBack();
+
+  console.log(product);
   } else this.pricenumber = true;
   }
   goBack(){
     this.routes.navigate(['/products']);
   }
+    nameImgUrl():any {
+        return (<HTMLInputElement>document.getElementById('img_url')).value.match(/[^\/\\]+$/)[0];
+    };
 }

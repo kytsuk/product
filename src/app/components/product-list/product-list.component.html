@@ -2,6 +2,7 @@
   <div class="row">
     <div class=" list-product">
       <button class="btn btn-success" (click)="showImage()" >{{btnText}} image</button>
+      <button class="btn btn-success" (click)="onModal()" >Add modul</button>
     </div>
 
     <table class="table">
@@ -24,11 +25,12 @@
                  src="{{item.img_url}}"></td>
             <td> <a [routerLink]="['/product', p]">{{item.name}}</a></td>
         <td>{{item.code}}</td>
-        <td>{{item.price}}</td>
+        <td>{{item.price | currency}}</td>
        <app-star [rating]="item.rating"></app-star>
 
         </tr>
       </tbody>
     </table>
   </div>
+
 </div>

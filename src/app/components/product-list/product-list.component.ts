@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Product} from '../Product.model';
 import {ProductService} from '../product.service';
 
+
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -21,5 +23,8 @@ private productes: Product[];
     this.showimg ? this.btnText = 'Show' : this.btnText = 'Hidden';
     this.showimg = !this.showimg;
 
+  }
+  onModal(){
+   // this.modal.element.nativeElement.alert("");
   }
 }

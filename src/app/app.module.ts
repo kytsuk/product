@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {ElementRef, NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -11,6 +11,7 @@ import { StarComponent } from './components/star/star.component';
 import {RouterModule} from "@angular/router";
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
     FormsModule,
     HttpModule,
       RouterModule.forRoot([
-        {path: '', component: AppComponent, pathMatch: 'full'},
+        {path: '', redirectTo: 'products', pathMatch: 'full'},
         {path: 'products' , component: ProductListComponent},
         { path: 'product/:id' , component: ProductItemComponent},
         { path: 'add' , component: AddProductComponent},
