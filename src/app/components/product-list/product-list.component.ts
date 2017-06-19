@@ -11,8 +11,9 @@ import {ProductService} from '../product.service';
 })
 export class ProductListComponent implements OnInit {
 private productes: Product[];
-        showimg: boolean = false;
-        btnText: string = 'Show';
+        showimg: boolean = true;
+        btnText: string = 'Hidden';
+        ListFilter: string = "";
   constructor(private productservice: ProductService) { }
 
   ngOnInit() {

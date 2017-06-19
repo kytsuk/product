@@ -16,6 +16,8 @@ export class EditProductComponent implements OnInit {
  id: number;
   myForm : FormGroup;
   pricenumber: boolean = false;
+  url: string;
+    url_tmpt: string = '../../../assets/image/';
   constructor (private productservice: ProductService, private routes: Router, private   route: ActivatedRoute) {
 
    this.route.params.subscribe(res => this.id= +res['id']);
@@ -24,7 +26,7 @@ export class EditProductComponent implements OnInit {
   }
   ngOnInit(){
     this.myForm = new FormGroup({
-      img_url: new FormControl(this.product.img_url, Validators.required),
+      img_url: new FormControl(),
       name: new FormControl(this.product.name, [Validators.required]),
       code: new FormControl(this.product.code, [Validators.required]),
       price: new FormControl(this.product.price, Validators.required),
@@ -32,18 +34,24 @@ export class EditProductComponent implements OnInit {
     });
 
   }
-  public  onSubmit(myForm: FormGroup){
 
+  public  onSubmit(myForm: FormGroup){
+     let valueInput = (<HTMLInputElement>document.getElementById('img_url')).value;
+          if (!valueInput ) {
+         this.url = this.product.img_url;
+
+     } else {
+         this.url = this.url_tmpt + valueInput.match(/[^\/\\]+$/)[0];
+          }
 
     if (isNumeric(myForm.value.price) && isNumeric(myForm.value.rating) ) {
       let product: Product = new Product(this.id, myForm.value.name,
           myForm.value.code, myForm.value.price,
-          myForm.value.rating, myForm.value.img_url);
-
+          myForm.value.rating, this.url);
       this.productservice.editProduct(this.id, product);
       this.pricenumber = false;
       this.goBack();
-    } else this.pricenumber = true;
+    };
   }
   goBack(){
     this.routes.navigate(['/products']);

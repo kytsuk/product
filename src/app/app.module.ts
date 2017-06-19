@@ -11,6 +11,7 @@ import { StarComponent } from './components/star/star.component';
 import {RouterModule} from "@angular/router";
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { SearchPipe } from './search.pipe';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
     ProductItemComponent,
     StarComponent,
     AddProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
