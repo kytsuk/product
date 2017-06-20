@@ -26,15 +26,17 @@
         <td><img *ngIf="showimg"
                  [ngStyle]="{'max-width' : '50px'} "
                  src="{{item.img_url}}"></td>
-            <td> <a [routerLink]="['/product', p]">{{item.name}}</a></td>
+            <td > <a [routerLink]="['/product', p]">{{item.name}}</a></td>
         <td>{{item.code}}</td>
-        <td>{{item.price | currency:'USD': true}}</td>
+        <td (click)="showDialog()">{{item.price | currency:'USD': true}}</td>
        <app-star [rating]="item.rating"></app-star>
+
 
         </tr>
       </tbody>
     </table>
-
-<app-modal-dialog *ngIf="isModalDialogVisible" (isConfirmed)="closeModal($event)"> </app-modal-dialog>
 </div>
+<app-modal-dialog *ngIf="isModalDialogVisible" (isConfirmed)="closeModal($event)"
+                  [id]="p">
+</app-modal-dialog>
 <section #notificationBlock></section>

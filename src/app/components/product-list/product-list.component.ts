@@ -2,9 +2,8 @@ import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {Product} from '../Product.model';
 import {ProductService} from '../product.service';
 import {NotificationManager} from "../modal/modal-dynamick/notification.manager";
-import {ModalDynamickComponent} from "../modal/modal-dynamick/modal-dynamick.component";
-import {ModalDialogResult} from "../modal/modal-dynamick/modalDialog.base";
-import {ModalDialogService} from "../modal/modal-dialog.service";
+
+import {ModalDialogService} from "../modal/modal-dynamick/modal-dialog.service";
 
 
 
@@ -40,10 +39,10 @@ private productes: Product[];
   public closeModal(isConfirmed: boolean) {
     this.isModalDialogVisible = false;
     if (isConfirmed) {
-      alert( "modal dialog is confirmed");
+      //alert( "modal dialog is confirmed");
     }
     else {
-      alert("modal dialog is closed");
+     // alert("modal dialog is closed");
     }
       }
   //

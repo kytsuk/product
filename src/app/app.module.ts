@@ -14,11 +14,11 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 import { SearchPipe } from './search.pipe';
 import {AppRoutingModule} from "./app-routing.module";
 import { LoadComponent } from './components/load/load.component';
-import {UploadService} from "./upload.service";
+
 import { ModalDialogComponent } from './components/modal/modal-dialog/modal-dialog.component';
 import { ModalDynamickComponent } from './components/modal/modal-dynamick/modal-dynamick.component';
 import {NotificationManager} from "./components/modal/modal-dynamick/notification.manager";
-import {ModalDialogService} from "./components/modal/modal-dialog.service";
+import {ModalDialogService} from "./components/modal/modal-dynamick/modal-dialog.service";
 
 
 @NgModule({
@@ -41,7 +41,7 @@ import {ModalDialogService} from "./components/modal/modal-dialog.service";
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [ProductService,  ModalDialogComponent, NotificationManager, ModalDialogService, ProductListComponent],
+  providers: [ProductService,  ModalDialogComponent, NotificationManager, ModalDialogService],
   entryComponents: [ ModalDynamickComponent],
   bootstrap: [AppComponent]
 })
