@@ -33,7 +33,7 @@
           <textarea type="number" name="rating" class="form-control"  placeholder="Rating"  required formControlName="rating"> </textarea>
           <div *ngIf="myForm.controls['rating'].invalid && myForm.controls['rating'].touched || pricenumber"
                class="alert alert-danger">
-            Please enter raiting number
+            Please enter raiting number of 0 to 5
           </div>
         </div>
       </div>

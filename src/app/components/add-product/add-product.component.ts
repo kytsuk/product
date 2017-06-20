@@ -5,6 +5,8 @@ import {ProductService} from "../product.service";
 import { Subscription } from "rxjs/Subscription";
 import {isNumeric} from "rxjs/util/isNumeric";
 import {Router} from "@angular/router";
+import {min} from "rxjs/operator/min";
+import {max} from "rxjs/operator/max";
 
 
 @Component({
@@ -26,7 +28,7 @@ export class AddProductComponent implements OnInit {
       name: new FormControl('', [Validators.required]),
       code: new FormControl('', [Validators.required]),
       price: new FormControl('', Validators.required),
-      rating: new FormControl('', Validators.required)
+      rating: new FormControl('', [Validators.required, Validators.min(1), Validators.max(5)])
     });
 
   }
