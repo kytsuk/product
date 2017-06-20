@@ -3,7 +3,7 @@ import {Product} from '../Product.model';
 import {ProductService} from '../product.service';
 import {NotificationManager} from "../modal/modal-dynamick/notification.manager";
 
-import {ModalDialogService} from "../modal/modal-dynamick/modal-dialog.service";
+import {ModalDialogService} from "../modal/modal-dialog.service";
 
 
 
@@ -17,6 +17,7 @@ private productes: Product[];
         showimg: boolean = true;
         btnText: string = 'Hidden';
         ListFilter: string = "";
+        id: number ;
 
   private isModalDialogVisible: boolean = false;
   @ViewChild('notificationBlock', { read: ViewContainerRef }) notificationBlock: ViewContainerRef;

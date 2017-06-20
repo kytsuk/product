@@ -4,7 +4,7 @@
 </div>
     <div class=" list-product">
       <button class="btn btn-success" (click)="showImage()" >{{btnText}} image</button>
-      <button class="btn btn-success" (click)="showDialog()" >open Modal</button>
+
         <button class="btn btn-success" (click)="showDialogDin()" >open Modal 2</button>
     </div>
 
@@ -23,12 +23,13 @@
 
         <tr *ngFor="let item of productes  | search: ListFilter; let p = index" >
 
-        <td><img *ngIf="showimg"
+        <td (mouseup)="[showDialog() , id= p]" style="cursor: pointer">
+            <img *ngIf="showimg"
                  [ngStyle]="{'max-width' : '50px'} "
                  src="{{item.img_url}}"></td>
             <td > <a [routerLink]="['/product', p]">{{item.name}}</a></td>
         <td>{{item.code}}</td>
-        <td (click)="showDialog()">{{item.price | currency:'USD': true}}</td>
+        <td >{{item.price | currency:'USD': true}}</td>
        <app-star [rating]="item.rating"></app-star>
 
 
@@ -37,6 +38,6 @@
     </table>
 </div>
 <app-modal-dialog *ngIf="isModalDialogVisible" (isConfirmed)="closeModal($event)"
-                  [id]="p">
+                  [id]="id">
 </app-modal-dialog>
 <section #notificationBlock></section>
