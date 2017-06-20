@@ -33,7 +33,6 @@ export class AddProductComponent implements OnInit {
 
   public  onSubmit(myForm: FormGroup){
   let img_url = this.el.nativeElement.files[0].name;
-  console.log(img_url);
   if (isNumeric(myForm.value.price) && isNumeric(myForm.value.rating) ) {
   let product: Product = new Product(this.id, myForm.value.name,
       myForm.value.code, myForm.value.price,

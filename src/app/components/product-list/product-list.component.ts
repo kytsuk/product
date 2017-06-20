@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {Product} from '../Product.model';
 import {ProductService} from '../product.service';
+import {NotificationManager} from "../modal/modal-dynamick/notification.manager";
+import {ModalDynamickComponent} from "../modal/modal-dynamick/modal-dynamick.component";
+import {ModalDialogResult} from "../modal/modal-dynamick/modalDialog.base";
 
 
 
@@ -14,18 +17,44 @@ private productes: Product[];
         showimg: boolean = true;
         btnText: string = 'Hidden';
         ListFilter: string = "";
-  constructor(private productservice: ProductService) { }
+
+  private isModalDialogVisible: boolean = false;
+  @ViewChild('notificationBlock', { read: ViewContainerRef }) notificationBlock: ViewContainerRef;
+
+  constructor(private productservice: ProductService, private notificationManager: NotificationManager)
+  { }
 
   ngOnInit() {
     this.productes = this.productservice.getProducts();
-
+    this.notificationManager.init(this.notificationBlock);
   }
   showImage(){
     this.showimg ? this.btnText = 'Show' : this.btnText = 'Hidden';
     this.showimg = !this.showimg;
 
   }
-  onModal(){
-   // this.modal.element.nativeElement.alert("");
+  public showDialog() {
+    this.isModalDialogVisible = true;
+  }
+  public closeModal(isConfirmed: boolean) {
+    this.isModalDialogVisible = false;
+    if (isConfirmed) {
+      alert( "modal dialog is confirmed");
+    }
+    else {
+      alert("modal dialog is closed");
+    }
+      }
+
+      public showDialogDin(header: string, description: string) {
+    this.notificationManager.showDialog(ModalDynamickComponent, header, description)
+        .subscribe((x: ModalDialogResult)=> {
+          if (x == ModalDialogResult.Confirmed) {
+            alert("modal dialog is confirmed");
+          }
+          else {
+            alert("modal dialog is closed");
+          }
+        });
   }
 }

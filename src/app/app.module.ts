@@ -15,6 +15,10 @@ import { SearchPipe } from './search.pipe';
 import {AppRoutingModule} from "./app-routing.module";
 import { LoadComponent } from './components/load/load.component';
 import {UploadService} from "./upload.service";
+import { ModalDialogComponent } from './components/modal/modal-dialog/modal-dialog.component';
+import { ModalDynamickComponent } from './components/modal/modal-dynamick/modal-dynamick.component';
+import {NotificationManager} from "./components/modal/modal-dynamick/notification.manager";
+import {ModalDialogService} from "./components/modal/modal-dialog.service";
 
 
 @NgModule({
@@ -26,7 +30,9 @@ import {UploadService} from "./upload.service";
     AddProductComponent,
     EditProductComponent,
     SearchPipe,
-    LoadComponent
+    LoadComponent,
+    ModalDialogComponent,
+    ModalDynamickComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,8 @@ import {UploadService} from "./upload.service";
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [ProductService, UploadService],
+  providers: [ProductService,  ModalDialogComponent, NotificationManager, ModalDialogService, ProductListComponent],
+  entryComponents: [ ModalDynamickComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
