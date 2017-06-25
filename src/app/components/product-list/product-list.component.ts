@@ -1,9 +1,10 @@
 import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {Product} from '../Product.model';
-import {ProductService} from '../product.service';
+
 import {NotificationManager} from "../modal/modal-dynamick/notification.manager";
 
 import {ModalDialogService} from "../modal/modal-dialog.service";
+import {DataService} from "../../data.service";
 
 
 
@@ -22,13 +23,20 @@ private productes: Product[];
   private isModalDialogVisible: boolean = false;
   @ViewChild('notificationBlock', { read: ViewContainerRef }) notificationBlock: ViewContainerRef;
 
-  constructor(private productservice: ProductService, private notificationManager: NotificationManager, private modalservise: ModalDialogService)
+  constructor(private notificationManager: NotificationManager,
+              private modalservise: ModalDialogService,
+              private dataServise: DataService)
   { }
 
   ngOnInit() {
-    this.productes = this.productservice.getProducts();
+    this.dataServise.loadDate().subscribe(
+        (res) => {
+          this.productes = res.json();
+          }
+    );
     this.notificationManager.init(this.notificationBlock);
   }
+
   showImage(){
     this.showimg ? this.btnText = 'Show' : this.btnText = 'Hidden';
     this.showimg = !this.showimg;
@@ -46,8 +54,10 @@ private productes: Product[];
      // alert("modal dialog is closed");
     }
       }
-  //
+
   showDialogDin(){
     this.modalservise.showDialogDin('Its dynamic Modal', 'Some text');
   }
+
+
 }

@@ -19,6 +19,7 @@ import { ModalDialogComponent } from './components/modal/modal-dialog/modal-dial
 import { ModalDynamickComponent } from './components/modal/modal-dynamick/modal-dynamick.component';
 import {NotificationManager} from "./components/modal/modal-dynamick/notification.manager";
 import {ModalDialogService} from "./components/modal/modal-dialog.service";
+import {DataService} from "./data.service";
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import {ModalDialogService} from "./components/modal/modal-dialog.service";
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [ProductService,  ModalDialogComponent, NotificationManager, ModalDialogService],
+  providers: [ProductService,  ModalDialogComponent, NotificationManager, ModalDialogService, DataService],
   entryComponents: [ ModalDynamickComponent],
   bootstrap: [AppComponent]
 })

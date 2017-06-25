@@ -1,0 +1,31 @@
+<div class="modal-background">
+  <div class="container">
+    <div class="header-block">
+      <h3 class="header-title">Header</h3>
+    </div>
+    <div class="content">
+<div class="">
+  <div class="row">
+    <div class="col-sm-5">
+      <img
+              [ngStyle]="{'max-width' : '150px'} "
+              src="{{product.img_url}}">
+    </div>
+     <div class="col-sm-7">
+       <div> <h4>Name product - {{product.name}}</h4></div>
+       <div>Code product - {{product.code}}</div>
+       <div>Price- {{product.price | currency:'USD': true}}</div>
+       <app-star [rating]="product.rating"></app-star>
+
+     </div>
+
+  </div>
+</div>
+
+    </div>
+    <div class="action-block">
+      <button class="simple-button btn btn-info" (click)="confirm()">Add</button>
+      <button class="simple-button btn btn-info" (click)="close()">Close</button>
+    </div>
+  </div>
+</div>

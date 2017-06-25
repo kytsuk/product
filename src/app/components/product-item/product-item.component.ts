@@ -1,7 +1,8 @@
 import {Component, OnInit, Output} from '@angular/core';
 import {Product} from "../Product.model";
-import {ProductService} from "../product.service";
+
 import {ActivatedRoute,  Router} from "@angular/router";
+import {DataService} from "../../data.service";
 
 @Component({
   selector: 'app-product-item',
@@ -9,14 +10,19 @@ import {ActivatedRoute,  Router} from "@angular/router";
   styleUrls: ['./product-item.component.css']
 })
 export class ProductItemComponent implements OnInit {
-  product:Product;
-  id:number;
-  constructor(private productservise: ProductService, private route: ActivatedRoute, private routes: Router) {
+  product: Product;
+  id: number;
+  constructor(private dataServise: DataService, private route: ActivatedRoute, private routes: Router) {
       this.route.params.subscribe(res => this.id = +res['id'] );
   }
 
   ngOnInit() {
-this.product = this.productservise.getProduct(this.id);
+  this.dataServise.getProduct(this.id)
+      .subscribe(
+          res => {
+            this.product = res;
+          }
+      );
 
   }
   goBack(){
@@ -25,8 +31,8 @@ this.product = this.productservise.getProduct(this.id);
   edit(){
     this.routes.navigate(['product', this.id, 'edit']);
   }
-  deleteProduct(){
-    this.productservise.deleteProduct(this.id);
-    this.goBack();
-  }
+  // deleteProduct(){
+  //   this.productservise.deleteProduct(this.id);
+  //   this.goBack();
+  // }
 }
