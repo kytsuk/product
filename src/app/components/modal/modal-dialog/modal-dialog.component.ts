@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Product} from "../../Product.model";
-import {ProductService} from "../../product.service";
+import {Product} from "../../product/Product.model";
+import {ProductService} from "../../product/product.service";
+import {DataService} from "../../../data.service";
 
 @Component({
   selector: 'app-modal-dialog',
@@ -9,12 +10,12 @@ import {ProductService} from "../../product.service";
 })
 export class ModalDialogComponent implements OnInit {
   product:Product;
-  @Input() id: number;
+  @Input() id: string;
   @Output() isConfirmed: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private productservise: ProductService) {  }
+  constructor(private dataServise: DataService) {  }
   ngOnInit(): void {
-    this.product = this.productservise.getProduct(this.id);
+    this.dataServise.getProduct(this.id).subscribe(res => this.product = res);
 
   }
 

@@ -2,11 +2,12 @@
 <div>
     <input type="text" [(ngModel)]="ListFilter"> <span> Filter product</span>
 </div>
+
     <div class=" list-product">
       <button class="btn btn-success" (click)="showImage()" >{{btnText}} image</button>
 
         <button class="btn btn-success" (click)="showDialogDin()" >open Modal 2</button>
-        <button class="btn btn-success" (click)="onData()" >Save Data</button>
+
     </div>
 
     <table class="table">
@@ -22,16 +23,15 @@
       </thead>
       <tbody>
 
-        <tr *ngFor="let item of productes  | search: ListFilter; let p = index" >
-
-        <td (mouseup)="[showDialog() , id= p]" style="cursor: pointer">
+        <tr *ngFor="let item of arrayOfKeys | search: ListFilter" >
+        <td (click)="[showDialog() , id= item]" style="cursor: pointer">
             <img *ngIf="showimg"
                  [ngStyle]="{'max-width' : '50px'} "
-                 src="{{item.img_url}}"></td>
-            <td > <a [routerLink]="['/product', p]">{{item.name}}</a></td>
-        <td>{{item.code}}</td>
-        <td >{{item.price | currency:'USD': true}}</td>
-       <app-star [rating]="item.rating"></app-star>
+                 src="{{productes[item].img_url}}"></td>
+            <td > <a [routerLink]="['/product', item]">{{productes[item].name}}</a></td>
+        <td>{{productes[item].code}}</td>
+        <td >{{productes[item].price | currency:'USD': true}}</td>
+       <app-star [rating]="productes[item].rating"></app-star>
 
 
         </tr>

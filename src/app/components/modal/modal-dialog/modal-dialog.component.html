@@ -1,4 +1,4 @@
-<div class="modal-background">
+<div class="modal-background" *ngIf="product">
   <div class="container">
     <div class="header-block">
       <h3 class="header-title">Header</h3>
@@ -15,7 +15,11 @@
        <div> <h4>Name product - {{product.name}}</h4></div>
        <div>Code product - {{product.code}}</div>
        <div>Price- {{product.price | currency:'USD': true}}</div>
-       <app-star [rating]="product.rating"></app-star>
+      <div>
+          <app-star [rating]="product.rating">   </app-star> <span>Rating - {{product.rating}} of 5</span>
+
+      </div>
+
 
      </div>
 

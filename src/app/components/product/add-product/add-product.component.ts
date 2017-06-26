@@ -1,12 +1,11 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Product} from "../Product.model";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ProductService} from "../product.service";
-import { Subscription } from "rxjs/Subscription";
+
 import {isNumeric} from "rxjs/util/isNumeric";
 import {Router} from "@angular/router";
-import {min} from "rxjs/operator/min";
-import {max} from "rxjs/operator/max";
+
+import {DataService} from "../../../data.service";
 
 
 @Component({
@@ -20,7 +19,7 @@ export class AddProductComponent implements OnInit {
   pricenumber: boolean = false;
   url: string = '../../../assets/image/';
     @ViewChild('img_url') el:ElementRef;
-  constructor (private productservice: ProductService, private routes: Router) {
+  constructor (private dataServise: DataService, private routes: Router) {
   }
   ngOnInit(){
         this.myForm = new FormGroup({
@@ -40,7 +39,8 @@ export class AddProductComponent implements OnInit {
       myForm.value.code, myForm.value.price,
       myForm.value.rating, this.url+img_url);
 
-  this.productservice.addProduct(product);
+  this.dataServise.addProduct(product)
+
   this.pricenumber = false;
   this.goBack();
 
@@ -48,7 +48,7 @@ export class AddProductComponent implements OnInit {
   } else this.pricenumber = true;
   }
   goBack(){
-    this.routes.navigate(['/products']);
+    this.routes.navigate(['/']);
   }
 
 }

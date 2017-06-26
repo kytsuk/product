@@ -1,6 +1,6 @@
 <div class="conteiner " >
   <div class="row add-news">
-    <form   [formGroup]="myForm" novalidate  (ngSubmit)="onSubmit(myForm)">
+    <form   [formGroup]="myForm" novalidate  (ngSubmit)="onSubmit(myForm)" *ngIf="product" >
       <div class="form-group">
         <div class="col-xs-offset-3 col-xs-6">
           <input class="form-control" name="title" id="title"  placeholder = "Name"   formControlName="name"/>

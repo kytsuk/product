@@ -2,7 +2,9 @@ import {Component, OnInit, Output} from '@angular/core';
 import {Product} from "../Product.model";
 
 import {ActivatedRoute,  Router} from "@angular/router";
-import {DataService} from "../../data.service";
+import {DataService} from "../../../data.service";
+
+
 
 @Component({
   selector: 'app-product-item',
@@ -11,9 +13,9 @@ import {DataService} from "../../data.service";
 })
 export class ProductItemComponent implements OnInit {
   product: Product;
-  id: number;
+  id: string;
   constructor(private dataServise: DataService, private route: ActivatedRoute, private routes: Router) {
-      this.route.params.subscribe(res => this.id = +res['id'] );
+      this.route.params.subscribe(res => this.id = res['id'] );
   }
 
   ngOnInit() {
@@ -26,13 +28,17 @@ export class ProductItemComponent implements OnInit {
 
   }
   goBack(){
-    this.routes.navigate(['products']);
+     this.routes.navigate(['products']);
+
+
   }
   edit(){
     this.routes.navigate(['product', this.id, 'edit']);
   }
-  // deleteProduct(){
-  //   this.productservise.deleteProduct(this.id);
-  //   this.goBack();
-  // }
+   deleteProduct(){
+      if(confirm("Delete this product ?")) {
+          this.dataServise.deleteProduct(this.id, this.product);
+          setTimeout(this.routes.navigate(['/']), 4000, alert("Product is Delete"));
+      } else this.goBack();
+   }
 }
