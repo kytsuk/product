@@ -53,9 +53,9 @@
         <div formArrayName="description" >
           <div class="form-group" *ngFor="let color of myForm.controls['description'].controls; let i = index">
 
-            <input class=" " formControlName="{{i}}" placeholder="Color" />
-            <input class=" " formControlName="{{i}}" placeholder="Amount"/>
-            <input class=" " formControlName="{{i}}" placeholder="Category"/>
+            <input class=" " formControlName="{{i}}*10" placeholder="Color" />
+            <input class=" " formControlName="{{i}}*20" placeholder="Amount"/>
+            <input class=" " formControlName="{{i}}*30" placeholder="Category"/>
           </div>
         </div>
         </div>

@@ -72,6 +72,6 @@ export class AddProductComponent implements OnInit {
   }
   Add(){
     (<FormArray>this.myForm.controls["description"]).push(new FormControl("", Validators.required));
-    //console.log(this.myForm.controls["description"]);
+    console.log(this.myForm.controls["description"]);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ProductService} from "../product.service";
+
 import {ActivatedRoute, Router} from "@angular/router";
 import {isNumeric} from "rxjs/util/isNumeric";
 import {Product} from "../Product.model";

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http, Response, Headers} from "@angular/http";
 import {Product} from "./components/product/Product.model";
-import {ProductService} from "./components/product/product.service";
+
 import 'rxjs/add/operator/map';
 
 import  _ from 'lodash';

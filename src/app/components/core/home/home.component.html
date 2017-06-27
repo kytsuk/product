@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row " >
+
+    <ul class="nav nav-tabs ">
+      <h2 >My product shop</h2>
+      <li role="presentation" *ngIf="!authServise.isAuth()"><a routerLink="/register">Register</a></li>
+      <li role="presentation" *ngIf="!authServise.isAuth()"><a routerLink="/login">Login</a></li>
+      <li role="presentation" *ngIf="authServise.isAuth()"><a (click)="logOut()" style="cursor: pointer">Logout</a></li>
+    </ul>
+
+  </div>
+</div>
