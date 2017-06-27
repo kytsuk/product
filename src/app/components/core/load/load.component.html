@@ -2,13 +2,13 @@
   <h2>{{name}}</h2>
   <div class="row label label-group">
 
-    <input #fileInput (change)="fileUpload()" type="file" name="pic"  class="label-control">
+    <input #fileInput (change)="fileUpload()" type="file" name="pic"  class="label-control" id="fileInput">
     <output id="list"></output>
 
   </div>
   <div>{{message}}</div>
   <div>{{message2}}</div>
   <div>{{message3}}</div>
-  <div>{{this.el}}</div>
+  <div id="fileDisplayArea"></div>
 </div>
 

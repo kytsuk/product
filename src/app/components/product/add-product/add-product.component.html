@@ -39,7 +39,7 @@
       </div>
       <div class="form-group">
         <div class="col-xs-offset-3 col-xs-6">
-          <input type="file" class="form-control" name="img_url"  placeholder="Add image "  formControlName="img_url" id="img_url" #img_url >
+          <input type="file" class="form-control" name="img_url"  placeholder="Add image "  formControlName="img_url" id="img_url" #img_url (change)="fileUpload()"  >
 
           <div *ngIf="myForm.controls['img_url'].invalid && myForm.controls['img_url'].touched"
                class="alert alert-danger">
@@ -47,8 +47,26 @@
           </div>
         </div>
       </div>
+
       <div class="form-group">
-        <div class="col-xs-offset-3 col-xs-2">
+        <div class="col-xs-offset-3 col-xs-9">
+        <div formArrayName="description" >
+          <div class="form-group" *ngFor="let color of myForm.controls['description'].controls; let i = index">
+
+            <input class=" " formControlName="{{i}}" placeholder="Color" />
+            <input class=" " formControlName="{{i}}" placeholder="Amount"/>
+            <input class=" " formControlName="{{i}}" placeholder="Category"/>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-offset-3 col-xs-9">
+          <button  class="btn btn-primary  my-btn"  (click)="Add()">Add Color</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-offset-3 col-xs-9">
           <button  class="btn btn-success btn-lg my-btn"   [disabled]="myForm.invalid">Add</button>
         </div>
       </div>

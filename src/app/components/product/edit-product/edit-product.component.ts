@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ProductService} from "../product.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -17,8 +17,11 @@ export class EditProductComponent implements OnInit {
  id: string;
   myForm: FormGroup;
   pricenumber: boolean = false;
-  url: string;
-    url_tmpt: string = '../../../assets/image/';
+    @ViewChild('img_url') el: ElementRef;
+    reader: any;
+
+    url: string;
+
     name: string
   constructor (private dataServise: DataService, private routes: Router, private   route: ActivatedRoute) {
 
@@ -47,13 +50,13 @@ export class EditProductComponent implements OnInit {
        }
 
   public  onSubmit(myForm: FormGroup){
-     let valueInput = (<HTMLInputElement>document.getElementById('img_url')).value;
-          if (!valueInput ) {
-         this.url = this.product.img_url;
+      let valueInput = (<HTMLInputElement>document.getElementById('img_url')).value;
+         if (!valueInput ) {
+        this.url = this.product.img_url;
 
-     } else {
-         this.url = this.url_tmpt + valueInput.match(/[^\/\\]+$/)[0];
-          }
+   } else {
+       this.url = this.reader.result
+        }
 
     if (isNumeric(myForm.value.price) && isNumeric(myForm.value.rating) ) {
       let product: Product = new Product(this.product.id,
@@ -71,4 +74,20 @@ export class EditProductComponent implements OnInit {
   goBack(){
     this.routes.navigate(['/']);
   }
+    fileUpload() {
+        let file = this.el.nativeElement.files[0];
+        let imageType = /image.*/;
+        if (file.type.match(imageType)) {
+            this.reader = new FileReader();
+            this.reader.onloadend = (e) => {
+                let img = new Image();
+                img.src = this.reader.result;
+                console.log(this.reader.result);
+            }
+            this.reader.readAsDataURL(file);
+        }else {
+
+        }
+
+    }
 }
