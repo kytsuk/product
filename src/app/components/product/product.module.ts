@@ -9,6 +9,7 @@ import {ModalDialogComponent} from "../modal/modal-dialog/modal-dialog.component
 import {ProductRoutingModule} from "./product-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SearchPipe} from "../../search.pipe";
+import {FilterPipe} from "../../filter.pipe";
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import {SearchPipe} from "../../search.pipe";
       EditProductComponent,
       StarComponent,
       ModalDialogComponent,
-      SearchPipe
+      SearchPipe,
+      FilterPipe
   ],
   exports: [StarComponent]
 })

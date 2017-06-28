@@ -59,14 +59,14 @@ export class EditProductComponent implements OnInit {
         }
 
     if (isNumeric(myForm.value.price) && isNumeric(myForm.value.rating) ) {
-      let product: Product = new Product(this.product.id,
-          myForm.value.name,
-          myForm.value.code,
-          myForm.value.price,
-          myForm.value.rating,
-          this.url);
-      this.dataServise.editProduct(this.id, product);
-      console.log(product);
+     // let product: Product = new Product(this.product.id,
+         // myForm.value.name,
+         // myForm.value.code,
+         // myForm.value.price,
+         //myForm.value.rating,
+         // this.url);
+     // this.dataServise.editProduct(this.id, product);
+      //console.log(product);
       this.pricenumber = false;
       this.goBack();
     };

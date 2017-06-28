@@ -33,10 +33,12 @@ import {ModalModule} from "./components/modal/modal.module";
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent
+
   ],
   imports: [
     BrowserModule,

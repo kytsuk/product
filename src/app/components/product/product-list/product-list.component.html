@@ -23,12 +23,12 @@
       </thead>
       <tbody>
 
-        <tr *ngFor="let item of arrayOfKeys | search: ListFilter" >
+        <tr *ngFor="let item of arrayOfKeys " >
         <td (click)="[showDialog() , id= item]" style="cursor: pointer">
             <img *ngIf="showimg"
                  [ngStyle]="{'max-width' : '50px'} "
                  src="{{productes[item].img_url}}"></td>
-            <td > <a [routerLink]="['/product', item]">{{productes[item].name}}</a></td>
+            <td > <a [routerLink]="['/product', item]">{{productes[item].name | search: ListFilter}}</a></td>
         <td>{{productes[item].code}}</td>
         <td >{{productes[item].price | currency:'USD': true}}</td>
        <app-star [rating]="productes[item].rating"></app-star>

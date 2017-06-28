@@ -15,7 +15,7 @@ export class AuthService {
         .then(response =>
             {this.router.navigate(['']);
               console.log("Log In");
-              firebase.auth().currentUser.getToken()
+              firebase.auth().currentUser.getIdToken()
                   .then(
                       (token: string) => this.token = token
 
@@ -25,7 +25,7 @@ export class AuthService {
         .catch(error => console.log(error));
   }
   getToken(){
-    firebase.auth().currentUser.getToken()
+    firebase.auth().currentUser.getIdToken()
         .then(
             (token: string) => this.token = token
 

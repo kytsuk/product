@@ -32,10 +32,22 @@
           </td>
         </tr>
 
-
       </tbody>
-
     </table>
+      <table class="table">
+          <thead>
+          <th>Color</th>
+          <th>Amount</th>
+          <th>Category</th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let descrip of product.description; let i = index">
+              <td>{{product.description[i].color}}</td>
+              <td>{{product.description[i].amount}}</td>
+              <td>{{product.description[i].category}}</td>
+          </tr>
+          </tbody>
+      </table>
   </div>
     <router-outlet></router-outlet>
 </div>

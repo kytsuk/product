@@ -49,20 +49,47 @@
       </div>
 
       <div class="form-group">
-        <div class="col-xs-offset-3 col-xs-9">
-        <div formArrayName="description" >
-          <div class="form-group" *ngFor="let color of myForm.controls['description'].controls; let i = index">
+        <div class="col-xs-offset-3 col-xs-6">
+          <div formArrayName="description" >
+            <div class="form-group" *ngFor="let description of myForm.controls['description'].controls; let i = index  ">
 
-            <input class=" " formControlName="{{i}}*10" placeholder="Color" />
-            <input class=" " formControlName="{{i}}*20" placeholder="Amount"/>
-            <input class=" " formControlName="{{i}}*30" placeholder="Category"/>
+
+                <div class="form-group" [formGroupName]="i">
+                  <span>Product description {{i + 1}}</span>
+                  <span class="glyphicon glyphicon-remove pull-right"  (click)="removeAddress(i)"></span>
+                  <div class="form-control clearfix">
+                    <div class="col-xs-4">
+                      <label>Color</label>
+                      <input type="text" class="" formControlName="color" >
+                      <div  >
+                        <ul *ngIf=" myForm.controls.description.controls[i].controls.color.dirty" style="list-style: none">
+                          <li *ngFor="let colors of desc | filter: myForm.controls.description.controls[i].controls.color.value" >{{colors}}</li>
+                        </ul>
+                      </div>
+
+                    </div>
+                    <div class="col-xs-4">
+                      <label>Amount</label>
+                      <input type="number" class="" formControlName="amount">
+
+                    </div>
+                    <div class="col-xs-4">
+                      <label>Category</label>
+                      <select type="text" class="" formControlName="category">
+                        <option *ngFor="let item of categoryitem" [value]="item">{{item}}</option>
+                      </select>
+                    </div>
+
+                  </div>
+                </div>
+
+            </div>
           </div>
-        </div>
         </div>
       </div>
       <div class="form-group">
         <div class="col-xs-offset-3 col-xs-9">
-          <button  class="btn btn-primary  my-btn"  (click)="Add()">Add Color</button>
+          <a style="cursor: pointer"  (click)="Add()" [hidden]="myForm.controls.description.invalid" >Add Description</a>
         </div>
       </div>
       <div class="form-group">

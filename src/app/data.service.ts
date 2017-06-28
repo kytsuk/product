@@ -27,7 +27,7 @@ export class DataService {
 
   private extractProduct (response: Response){
     let res = response.json();
-    let product = (new Product(res.id, res.name, res.code, res.price, res.rating, res.img_url));
+    let product = (new Product(res.id, res.name, res.code, res.price, res.rating, res.img_url, res.description));
     return product;
   }
 
@@ -49,5 +49,7 @@ deleteProduct(id:string, product: Product){
         .subscribe(res => res);
 }
 
+ loadDescription(){
 
+ }
 }

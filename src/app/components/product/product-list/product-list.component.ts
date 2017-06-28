@@ -38,6 +38,7 @@ public productes: Product[]=[];
               this.arrayOfKeys = Object.keys(res);
               this.productes = res;
 
+
           });
 
     this.notificationManager.init(this.notificationBlock);
