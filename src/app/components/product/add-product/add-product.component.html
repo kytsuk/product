@@ -60,11 +60,17 @@
                   <div class="form-control clearfix">
                     <div class="col-xs-4">
                       <label>Color</label>
-                      <input type="text" class="" formControlName="color" >
+                      <input type="text" formControlName="color"
+                             [value]=" setcolor.setColor[i] ">
                       <div  >
-                        <ul *ngIf=" myForm.controls.description.controls[i].controls.color.dirty" style="list-style: none">
-                          <li *ngFor="let colors of desc | filter: myForm.controls.description.controls[i].controls.color.value" >{{colors}}</li>
-                        </ul>
+
+
+                       <app-desc-color [ListFilter]="myForm.controls.description.controls[i].controls.color.value"
+                                       *ngIf=" myForm.controls.description.controls[i].controls.color.dirty "
+                        [touch]="myForm.controls.description.controls[i].controls.color.dirty ">
+
+                       </app-desc-color>
+
                       </div>
 
                     </div>

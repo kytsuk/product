@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
 
 import {ActivatedRoute, Router} from "@angular/router";
 import {isNumeric} from "rxjs/util/isNumeric";
@@ -19,11 +19,10 @@ export class EditProductComponent implements OnInit {
   pricenumber: boolean = false;
     @ViewChild('img_url') el: ElementRef;
     reader: any;
-
     url: string;
-
-    name: string
-  constructor (private dataServise: DataService, private routes: Router, private   route: ActivatedRoute) {
+    name: string;
+    public categoryitem:string[]= ['Notebook','Monitor','Matherboard','Keyboard', 'Other'];
+    constructor (private dataServise: DataService, private routes: Router, private   route: ActivatedRoute) {
 
    this.route.params.subscribe(res => this.id= res['id']);
 
@@ -35,17 +34,21 @@ export class EditProductComponent implements OnInit {
           .subscribe(
               (res) => {
                  this.product = res;
-
+                  console.log(this.product.description);
 
                   this.myForm = new FormGroup({
                       img_url: new FormControl(),
                       name: new FormControl(this.product.name, [Validators.required]),
                       code: new FormControl(this.product.code, [Validators.required]),
                       price: new FormControl(this.product.price, Validators.required),
-                      rating: new FormControl(this.product.rating, Validators.required)
+                      rating: new FormControl(this.product.rating, Validators.required),
+                      description: new FormArray([
+
+                      ])
                   });
               }
           );
+
 
        }
 
@@ -89,5 +92,12 @@ export class EditProductComponent implements OnInit {
 
         }
 
+    }
+    initDescription(){
+        return new FormGroup({
+            color: new FormControl('', Validators.required),
+            amount: new FormControl('', [Validators.required]),
+            category: new FormControl('', Validators.required)
+        })
     }
 }

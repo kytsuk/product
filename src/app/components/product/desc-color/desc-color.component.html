@@ -1,0 +1,5 @@
+<ul *ngIf="visibile"
+    style="list-style: none" class="list-group">
+  <li *ngFor="let colors of desc | filter: ListFilter "
+      class="list-group-item"><a (click)="addColor(colors)" style="cursor: pointer">{{colors}}</a></li>
+</ul>

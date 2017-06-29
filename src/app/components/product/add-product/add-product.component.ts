@@ -5,7 +5,8 @@ import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
 import {isNumeric} from "rxjs/util/isNumeric";
 import {Router} from "@angular/router";
 import {DataService} from "../../../data.service";
-import {Pipe} from  "@angular/core";
+import { ProductService } from "../product.service";
+
 
 
 @Component({
@@ -18,14 +19,14 @@ export class AddProductComponent implements OnInit {
   myForm : FormGroup;
   pricenumber: boolean = false;
   desc : any[]=[];
-  ListFilter: string[]=[];
   obj: any={};
+  colorFormAdd: string='';
 
     @ViewChild('img_url') el:ElementRef;
     reader: any;
-  public categoryitem:string[]= ['Notebook','Monitor','Matherboard','Keyboard', 'Other'];
-  public arrayOfKeys;
-  constructor (private dataServise: DataService, private routes: Router) {  }
+   categoryitem:string[]= ['Notebook','Monitor','Matherboard','Keyboard', 'Other'];
+  arrayOfKeys;
+  constructor (private dataServise: DataService, private routes: Router , public setcolor: ProductService) {  }
   ngOnInit(){
         this.myForm = new FormGroup({
       img_url: new FormControl('', Validators.nullValidator),
@@ -93,18 +94,23 @@ export class AddProductComponent implements OnInit {
   }
   initDescription(){
     return new FormGroup({
-      color: new FormControl('', Validators.required),
+      color: new FormControl(''),
       amount: new FormControl('', [Validators.required]),
       category: new FormControl('', Validators.required)
     })
   }
   Add(){
     (<FormArray>this.myForm.controls['description']).push(this.initDescription());
+
      }
 
      removeAddress(i: number) {
     const control = <FormArray>this.myForm.controls['description'];
     control.removeAt(i);
   }
+addColor(color:string){
+      this.colorFormAdd = color;
 
+
+}
 }

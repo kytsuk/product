@@ -10,6 +10,7 @@ import {ProductRoutingModule} from "./product-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SearchPipe} from "../../search.pipe";
 import {FilterPipe} from "../../filter.pipe";
+import { DescColorComponent } from './desc-color/desc-color.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import {FilterPipe} from "../../filter.pipe";
       StarComponent,
       ModalDialogComponent,
       SearchPipe,
-      FilterPipe
+      FilterPipe,
+      DescColorComponent
   ],
   exports: [StarComponent]
 })

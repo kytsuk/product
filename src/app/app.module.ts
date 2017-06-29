@@ -26,6 +26,7 @@ import {CoreModule} from "./components/core/core.module";
 import {AuthModule} from "./components/auth/auth.module";
 import {HomeComponent} from "./components/core/home/home.component";
 import {ModalModule} from "./components/modal/modal.module";
+import { ProductService } from "./components/product/product.service";
 
 
 
@@ -51,7 +52,7 @@ import {ModalModule} from "./components/modal/modal.module";
 
   ],
 
-  providers: [ NotificationManager, ModalDialogService, DataService, AuthService, AuthGuardService],
+  providers: [ NotificationManager, ModalDialogService, DataService, AuthService, AuthGuardService, ProductService],
   entryComponents: [ ModalDynamickComponent],
   bootstrap: [AppComponent]
 })

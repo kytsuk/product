@@ -46,6 +46,46 @@
           </div>
         </div>
       </div>
+
+      <div class="form-group">
+        <div class="col-xs-offset-3 col-xs-6">
+          <div formArrayName="description" >
+            <div class="form-group" *ngFor="let descriptions of product.description; let i = index  ">
+
+
+              <div class="form-group" [formGroupName]="i">
+                <span>Product description {{i +1}}</span>
+                <span class="glyphicon glyphicon-remove pull-right"  (click)="removeAddress(i)"></span>
+                <div class="form-control clearfix">
+                  <div class="col-xs-4">
+                    <label>Color</label>
+                    <input type="text" class="" formControlName="color" >
+                    <!--<div  >-->
+                      <!--<ul *ngIf=" myForm.controls.description.controls[i].controls.color.dirty" style="list-style: none">-->
+                        <!--<li *ngFor="let colors of desc | filter: myForm.controls.description.controls[i].controls.color.value" >{{colors}}</li>-->
+                      <!--</ul>-->
+                    <!--</div>-->
+
+                  </div>
+                  <div class="col-xs-4">
+                    <label>Amount</label>
+                    <input type="number" class="" formControlName="amount">
+
+                  </div>
+                  <div class="col-xs-4">
+                    <label>Category</label>
+                    <select type="text" class="" formControlName="category">
+                      <option *ngFor="let item of categoryitem" [value]="item">{{item}}</option>
+                    </select>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="form-group">
         <div class="col-xs-offset-3 col-xs-2">
           <button  class="btn btn-success btn-lg my-btn" [disabled]="myForm.invalid"  >Update</button>
