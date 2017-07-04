@@ -4,6 +4,7 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { LoadComponent } from "./load/load.component";
 import { AuthGuardService } from "../auth/auth-guard.service";
+import {LoadPanelComponent} from "./load-panel/load-panel.component";
 
 @NgModule({
     imports: [
@@ -11,7 +12,7 @@ import { AuthGuardService } from "../auth/auth-guard.service";
         RouterModule.forChild([
 
             { path: 'load' , component: LoadComponent, canActivate: [AuthGuardService]},
-
+            { path: 'load-panel' , component: LoadPanelComponent},
 
         ])
     ],

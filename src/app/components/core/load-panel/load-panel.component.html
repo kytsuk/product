@@ -1,0 +1,58 @@
+<div class="container">
+  <h2>Panel image</h2>
+  <div  >
+    <button (click)="AddDesc()" class="btn btn-success">Add image description</button>
+  </div>
+  <div class="row ">
+
+<form [formGroup]="myForm" novalidate>
+    <div class="form-group">
+      <div class="col-xs-offset-3 col-xs-6">
+        <div formArrayName="image" >
+          <div class="form-group" *ngFor="let pic of myForm.controls['image'].controls; let k = index  ">
+            <div class="form-group" [formGroupName]="k">
+              <span>Image description {{k + 1}}</span>
+              <span class="glyphicon glyphicon-remove pull-right" style="cursor: pointer" (click)="removeAddress(k)"></span>
+              <div class="form-control clearfix img-style">
+
+                <div  class="col-xs-6">
+                  <div id=fileDisplayArea{{k}}  class="img-load"  >
+                    <span>Load image</span>
+                  </div>
+                  <input class="img-input" (change)="fileUpload(k)" type="file" name="pic" id="fileInput{{k}}"  formControlName="img">
+                  <button class="btn btn-success" (click)="log(k)">Load image</button>
+                </div>
+              <div  class="col-xs-5 form-group">
+               <label  class="">Add image description</label>
+              <input  type="text" name="description"   id="description{{k}}" formControlName="description">
+
+            </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <button class="btn btn-success" (click)="Update(myForm)">Update</button>
+      </div>
+    </div>
+</form>
+</div>
+  <div class="row col-xs-6">
+    <div class="carousel" *ngIf="obj">
+
+      <ul class="slides">
+
+        <li *ngFor="let d of obj; let i = index">
+          <h2>{{obj[i].desc}}</h2>
+          <img src="{{obj[i].src}}" title="{{obj[i].desc}}"  >
+        </li>
+
+      </ul>
+
+    </div>
+
+
+
+
+</div>
