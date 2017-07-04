@@ -21,10 +21,21 @@
                   </div>
                   <input class="img-input" (change)="fileUpload(k)" type="file" name="pic" id="fileInput{{k}}"  formControlName="img">
                   <button class="btn btn-success" (click)="log(k)">Load image</button>
+                  <div class="progress " *ngIf="prog[k]">
+                    <div class="progress-bar progress-bar-success progress-bar-striped"
+                         role="progressbar"
+                         [attr.aria-valuenow]="prog[k]"
+                         aria-valuemin="0" aria-valuemax ="100"
+                         style="min-width: 2em;" [style.width]="(prog[k]/100)*100 + '%'">
+                      {{prog[k]}}%
+                    </div>
+                  </div>
+
                 </div>
               <div  class="col-xs-5 form-group">
                <label  class="">Add image description</label>
               <input  type="text" name="description"   id="description{{k}}" formControlName="description">
+
 
             </div>
 
@@ -33,7 +44,7 @@
 
           </div>
         </div>
-        <button class="btn btn-success" (click)="Update(myForm)">Update</button>
+        <button class="btn btn-success" (click)="Update(myForm)">Update </button>
       </div>
     </div>
 </form>

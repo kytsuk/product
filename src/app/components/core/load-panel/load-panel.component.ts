@@ -10,6 +10,9 @@ import {el} from "@angular/platform-browser/testing/src/browser_util";
 export class LoadPanelComponent implements OnInit {
  imgsrc: any[] = [];
      myForm : FormGroup;
+     prog: any[] = [];
+
+
   constructor() {  }
     ngOnInit() {
     this.myForm = new FormGroup({
@@ -21,6 +24,7 @@ export class LoadPanelComponent implements OnInit {
   name:string;
    obj: any[] = [];
   fileUpload(i:number) {
+      this.prog[i] = '';
     // let valueInput = (<HTMLInputElement>document.getElementById('fileInput'+i)).value;
     // console.log(valueInput)
     let fileDisplayArea = document.getElementById('fileDisplayArea'+i);
@@ -33,8 +37,14 @@ export class LoadPanelComponent implements OnInit {
         let img = new Image();
         img.src = reader.result;
         img.style.maxHeight = '135px';
+
         this.imgsrc[i] = reader.result;
        fileDisplayArea.appendChild(img);
+      }
+      reader.onprogress = (event)=>{
+          this.prog[i] = Math.floor(event.loaded / event.total * 100)
+
+          console.log(this.prog[i]);
       }
       reader.readAsDataURL(file);
     }else {
@@ -69,7 +79,6 @@ Update(f: FormGroup){
 }
 log(i: number){
    (<HTMLInputElement>document.getElementById('fileInput'+i)).click();
-     // document.getElementById('fileInput'+i).click();
 
 }
 }
