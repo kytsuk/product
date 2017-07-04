@@ -27,3 +27,10 @@
     max-width: 135px !important;
 
 }
+.carousel{
+    max-width: 100%;
+    display: inline-block;
+}
+.carousel img{
+    max-width: 100%;
+}

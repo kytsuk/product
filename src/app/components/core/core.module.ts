@@ -4,17 +4,21 @@ import {LoadComponent} from "./load/load.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CoreRoutingModule} from "./core-routing.module";
 import { LoadPanelComponent } from './load-panel/load-panel.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import {CarouselModule} from "ngx-bootstrap";
 
 @NgModule({
   imports: [
     CommonModule,
       FormsModule,
       CoreRoutingModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      CarouselModule
   ],
   declarations: [
       LoadComponent,
-      LoadPanelComponent
+      LoadPanelComponent,
+      CarouselComponent
   ]
 })
 export class CoreModule { }

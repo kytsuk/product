@@ -44,24 +44,43 @@
 
           </div>
         </div>
-        <button class="btn btn-success" (click)="Update(myForm)">Update </button>
+        <button class="btn btn-success" (click)="Update(myForm)" *ngIf="imgsrc.length">Update </button>
       </div>
     </div>
 </form>
 </div>
-  <div class="row col-xs-6">
-    <div class="carousel" *ngIf="obj">
 
-      <ul class="slides">
+<div class="row">
+  <div class=" col-xs-offset-3 col-xs-6">
+    <carousel class="carousel" [interval]="3000">
+      <slide *ngFor="let d of obj; let i = index">
 
-        <li *ngFor="let d of obj; let i = index">
+      <img src="{{obj[i].src}}" title="{{obj[i].desc}}"  >
+        <div class="carousel-caption">
           <h2>{{obj[i].desc}}</h2>
-          <img src="{{obj[i].src}}" title="{{obj[i].desc}}"  >
-        </li>
 
-      </ul>
+        </div>
 
-    </div>
+      </slide>
+    </carousel>
+  </div>
+</div>
+
+
+
+  <!--<div class="row col-xs-6">-->
+    <!--<div class="carousel" *ngIf="obj">-->
+
+      <!--<ul class="slides">-->
+
+        <!--<li *ngFor="let d of obj; let i = index">-->
+          <!--<h2>{{obj[i].desc}}</h2>-->
+          <!--<img src="{{obj[i].src}}" title="{{obj[i].desc}}"  >-->
+        <!--</li>-->
+
+      <!--</ul>-->
+
+    <!--</div>-->
 
 
 

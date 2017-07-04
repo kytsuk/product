@@ -11,7 +11,8 @@ export class LoadPanelComponent implements OnInit {
  imgsrc: any[] = [];
      myForm : FormGroup;
      prog: any[] = [];
-
+    name:string;
+    obj: any[] = [];
 
   constructor() {  }
     ngOnInit() {
@@ -21,8 +22,7 @@ export class LoadPanelComponent implements OnInit {
       ])
     })
     }
-  name:string;
-   obj: any[] = [];
+
   fileUpload(i:number) {
       this.prog[i] = '';
     // let valueInput = (<HTMLInputElement>document.getElementById('fileInput'+i)).value;
