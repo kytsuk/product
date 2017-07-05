@@ -67,13 +67,15 @@ export class AddProductComponent implements OnInit {
       this.reader.result,
       myForm.controls.description.value);
 
-  //this.dataServise.addProduct(product)
+  this.dataServise.addProduct(product)
   this.pricenumber = false;
   this.goBack();
 
   console.log(product);
+
   } else this.pricenumber = true;
   }
+
   goBack(){
     this.routes.navigate(['/']);
   }
